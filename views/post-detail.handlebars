@@ -1,0 +1,41 @@
+
+<section class="container">
+
+  <div class="card">
+
+  <div class="post-subject">{{post.subject}}</div>
+  <div class="post-by">Post by: {{format_time post.updated_time}}</div>
+  <div class="post-img"><img src="{{img_url}}"></div>
+  <div class="post-detail">{{post.detail}}</div>
+
+  </div>
+</section>
+
+
+
+<section class="post-comment">
+  <div class="comment-div">
+    <div id="comment-status" class="form-error"></div>
+    <input type="hidden" id="postid" value="{{post.id}}"/>
+    <input type="hidden" id="post-commentid" value="{{comment.id}}"/>
+    <form class="form post-form">
+      <div class="form-group">
+        <label for="comment-detail">Comment:</label>
+        <textarea class="form-input"  id="post-comment-detail" ></textarea>
+
+      </div>
+      <div class="form-group">
+        <button id="post-comment-btn" class="btn btn-primary" type="button">Submit</button>
+      </div>
+    </form>
+  </div>
+
+</section>
+
+  <section class="flex-row justify-center">
+    {{#each comments as |comment|}}
+    {{> post-comments}}
+    {{/each}}
+  </section>
+
+<script src="/js/post-comment.js"></script>

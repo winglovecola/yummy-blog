@@ -1,0 +1,12 @@
+<section class="new-post">
+  <button id="postnow">New Post</button>
+</section>
+<section class="user-post">
+
+{{#each posts as |post|}}
+{{> dashboard-list}}
+{{/each}}
+
+</section>
+
+<script src="./js/dashboard.js"></script>
