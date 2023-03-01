@@ -1,4 +1,45 @@
-const postFormHandler = async (event) => {
+const creatCommentHandler = async (event) => {
+  const postid = document.querySelector('#postid').value.trim();
+
+
+  const postCommentId = document.querySelector('#post-commentid').value.trim();
+  const postCommentDetail = document.querySelector('#post-comment-detail').value.trim();
+
+  let fetchUrl = "", postMethod = "";
+  if (postCommentDetail) {
+
+    if (postCommentId != "")
+    {
+      fetchUrl = "/api/post-comment/" + postCommentId;
+      postMethod = "PUT";
+    }
+    else
+    {
+      fetchUrl = "/api/post-comment";
+      postMethod = "POST";
+    }
+
+    const response = await fetch(fetchUrl, {
+      method: postMethod,
+      body: JSON.stringify({ postid, postCommentDetail }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+      document.location.replace('/post/' + postid);
+    } else {
+      const isJson = response.headers.get('content-type')?.includes('application/json');
+      const data = isJson ? await response.json() : null;
+    
+      //console.log (data.errors[0].message);
+      //document.querySelector('#signup-status').innerHTML = data.errors.message;
+    }
+  }
+};
+
+
+
+const updateCommentHandler = async (event) => {
   event.preventDefault();
   const postId = document.querySelector('#postid').value.trim();
   const commentId = document.querySelector('#commentid').value.trim();
@@ -66,8 +107,11 @@ const postDeleteYes = async () => {
 
 };
 
+document.querySelector('#post-comment-btn').addEventListener('click', creatCommentHandler);
+document.querySelector('#post-comment-update-btn').addEventListener('click', updateCommentHandler);
 
-document.querySelector('#post-submit').addEventListener('click', postFormHandler);
+
+
 document.querySelector('#post-delete').addEventListener('click', postDelete);
 document.querySelector('#post-delete-no').addEventListener('click', postDeleteNo);
 document.querySelector('#post-delete-yes').addEventListener('click', postDeleteYes);
