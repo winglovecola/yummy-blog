@@ -1,9 +1,13 @@
 <section class="card">
   <a href="/postnow/{{id}}">
-    
-    <div>{{subject}}</div>
-    <div>Posted by {{poster}} on {{format_time updated_time}}</div>
-    <img src="{{img_url}}"><br><br>
-    {{detail}}
+
+  <header class="post-subject">{{subject}}</header>
+  <div class="card-body">
+    <div class="post-by">Post by: {{poster}} on {{format_time updated_time}}</div>
+    <div class="post-img"><img src="{{img_url}}"></div>
+    <div class="post-detail">{{detail}}</div>
+  </div>
+
   </a>
 </section>
+

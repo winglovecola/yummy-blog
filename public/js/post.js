@@ -40,10 +40,12 @@ const postFormHandler = async (event) => {
 
 const postDelete = async () => {
   document.querySelector('#delete-confirmation').style.display = "block";
+  document.querySelector('#post-delete').style.display = "none";
 };
 
 const postDeleteNo = async () => {
   document.querySelector('#delete-confirmation').style.display = "none";
+  document.querySelector('#post-delete').style.display = "block";
 };
 
 const postDeleteYes = async () => {

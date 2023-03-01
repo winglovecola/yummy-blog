@@ -7,18 +7,22 @@
   <title>Yummy Blog</title>
   <link rel="stylesheet" type="text/css" href="/css/jass.css">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
-  <header>
-    <h1>Yummy Blog</h1>
+  <header id="headerbar">
+    <div>Yummy Blog</div>
   </header>
   <nav>
     <a href="/">Home</a>
     
     {{#if loggedIn}}
-    <button id="dashboard" class="btn-no-style">Dashboard</button>
-    <button id="logout" class="btn-no-style">Logout</button>
+    <a id="dashboard" href="#">Dashboard</a>
+    <a id="logout" href="#">Logout</a>
     {{else}}
     <a href="/login">Login</a>
     {{/if}}
