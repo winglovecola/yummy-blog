@@ -1,0 +1,33 @@
+
+<section id="new-post">
+  <div class="post-div">
+    <div id="post-status" class="form-error"></div>
+    <form class="form post-form">
+      <input type="hidden" id="postid" value="{{comment.post_id}}"/>
+      <input type="hidden" id="commentid" value="{{comment.id}}"/>
+      <div class="form-group">
+        <label for="post-detail">Comment:</label>
+        <textarea class="form-input"  id="comment-detail" style="height: 300px;">{{comment.detail}}</textarea>
+      </div>
+
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+        <td width="50%"><button id="post-submit" class="btn btn-primary" type="button">Update Now</button></td>
+        <td width="50%" align="right">
+  
+        <button id="post-delete" class="btn btn-primary" type="button">Delete</button>
+        <div id="delete-confirmation">DELETE? 
+          <button id="post-delete-no" class="btn btn-primary" type="button">No</button> <button id="post-delete-yes" class="btn btn-primary" type="button">Yes</button>
+        </div>
+      
+      </td>
+      </tr>
+    </table>
+
+
+      
+    </form>
+  </div>
+</section>
+
+<script src="/js/post-comment.js"></script>

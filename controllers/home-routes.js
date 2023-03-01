@@ -3,6 +3,7 @@ const { Post, Comment } = require('../models');
 // Import the custom middleware
 const withAuth = require('../utils/auth');
 
+
 // mainpage and get all posts
 router.get('/', async (req, res) => {
   try {
@@ -31,7 +32,7 @@ router.get('/login', (req, res) => {
     return;
   }
 
-  res.render('login', {signupStatus: req.session.signupStatus});
+  res.render('login', {signupStatus: req.session.signupStatus, relogin: req.session.relogin});
 });
 
 module.exports = router;

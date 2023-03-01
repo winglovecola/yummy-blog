@@ -1,6 +1,13 @@
+{{#if owner}}
+<a href="/post-comment/{{id}}">
+{{/if}}
 <div class="card comment-card">
     <div class="card-body">
       <div class="post-by">Posted by {{poster}} on {{format_time updated_time}}</div>
       <div class="post-detail">{{detail}}</div>
     </div>
 </div>
+
+{{#if owner}}
+</a>
+{{/if}}

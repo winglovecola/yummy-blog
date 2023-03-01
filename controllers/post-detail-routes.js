@@ -25,6 +25,15 @@ router.get('/:id', withAuth, async (req, res) => {
       commentObj.get({ plain: true })
     );
 
+
+    comments.forEach ((comment) => {
+      //console.log (req.session.userid);
+      if (comment.poster_id == req.session.userid)
+        comment.owner = true;
+      else
+        comment.owner = false;
+    });
+
     res.render('post-detail', { post, comments, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);

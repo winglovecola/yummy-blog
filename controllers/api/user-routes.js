@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
       req.session.loggedIn = true;
       req.session.userid = userDataPlain.id;
       req.session.username = req.body.username;
-
+      req.session.relogin = false;
 
       res.status(200).json(userData);
     });
@@ -57,7 +57,7 @@ router.post('/login', async (req, res) => {
       req.session.loggedIn = true;
       req.session.userid = userDataPlain.id;
       req.session.username = userDataPlain.username;
-
+      req.session.relogin = false;
 
       
       res
@@ -74,11 +74,37 @@ router.post('/login', async (req, res) => {
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
-      res.status(204).end();
+      res.redirect('/');
     });
   } else {
-    res.status(404).end();
+    res.redirect('/');
   }
 });
+
+// Logout
+router.get('/idle-logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.relogin = true;
+    req.session.loggedIn = false;
+    res.redirect('/login');
+
+  } else {
+    res.redirect('/login');
+  }
+});
+
+
+
+
+
+//idle timeout
+router.post('/idle-timeout', (req, res) => {
+  req.session.relogin = true;
+  res.status(200).end();
+});
+
+
+
+
 
 module.exports = router;
